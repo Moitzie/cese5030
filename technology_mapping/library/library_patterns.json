@@ -1,0 +1,230 @@
+{
+  "pattern_library": "CMOS Technology Mapping Patterns",
+  "description": "Pattern matching templates for DAG covering algorithm",
+  "patterns": [
+    {
+      "id": "p1",
+      "name": "Single Inverter",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in", "type": "input"},
+          {"id": "inv", "type": "NOT", "library_cell": "INV"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in", "to": "inv"},
+          {"from": "inv", "to": "out"}
+        ]
+      },
+      "matches": ["INV"],
+      "cost": {"area": 1.2, "delay": 45}
+    },
+    {
+      "id": "p2",
+      "name": "2-input AND",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "and", "type": "AND", "library_cell": "AND2"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "and"},
+          {"from": "in2", "to": "and"},
+          {"from": "and", "to": "out"}
+        ]
+      },
+      "matches": ["AND2"],
+      "cost": {"area": 2.8, "delay": 120}
+    },
+    {
+      "id": "p3",
+      "name": "2-input OR",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "or", "type": "OR", "library_cell": "OR2"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "or"},
+          {"from": "in2", "to": "or"},
+          {"from": "or", "to": "out"}
+        ]
+      },
+      "matches": ["OR2"],
+      "cost": {"area": 2.4, "delay": 90}
+    },
+    {
+      "id": "p4",
+      "name": "NAND2 as AND+INV",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "and", "type": "AND", "library_cell": "AND2"},
+          {"id": "inv", "type": "NOT", "library_cell": "INV"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "and"},
+          {"from": "in2", "to": "and"},
+          {"from": "and", "to": "inv"},
+          {"from": "inv", "to": "out"}
+        ]
+      },
+      "matches": ["NAND2", "AND2+INV"],
+      "cost": {"area": 4.0, "delay": 165}
+    },
+    {
+      "id": "p5",
+      "name": "NOR2 as OR+INV",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "or", "type": "OR", "library_cell": "OR2"},
+          {"id": "inv", "type": "NOT", "library_cell": "INV"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "or"},
+          {"from": "in2", "to": "or"},
+          {"from": "or", "to": "inv"},
+          {"from": "inv", "to": "out"}
+        ]
+      },
+      "matches": ["NOR2", "OR2+INV"],
+      "cost": {"area": 3.6, "delay": 135}
+    },
+    {
+      "id": "p6",
+      "name": "XOR2 as AND-OR-NOT",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "not1", "type": "NOT", "library_cell": "INV"},
+          {"id": "not2", "type": "NOT", "library_cell": "INV"},
+          {"id": "and1", "type": "AND", "library_cell": "AND2"},
+          {"id": "and2", "type": "AND", "library_cell": "AND2"},
+          {"id": "or", "type": "OR", "library_cell": "OR2"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "not1"},
+          {"from": "in2", "to": "not2"},
+          {"from": "in1", "to": "and1"},
+          {"from": "not2", "to": "and1"},
+          {"from": "not1", "to": "and2"},
+          {"from": "in2", "to": "and2"},
+          {"from": "and1", "to": "or"},
+          {"from": "and2", "to": "or"},
+          {"from": "or", "to": "out"}
+        ]
+      },
+      "matches": ["XOR2", "AND2+OR2+INV"],
+      "cost": {"area": 11.6, "delay": 300}
+    },
+    {
+      "id": "p7",
+      "name": "3-input AND",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "in3", "type": "input"},
+          {"id": "and", "type": "AND", "library_cell": "AND3"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "and"},
+          {"from": "in2", "to": "and"},
+          {"from": "in3", "to": "and"},
+          {"from": "and", "to": "out"}
+        ]
+      },
+      "matches": ["AND3"],
+      "cost": {"area": 4.2, "delay": 180}
+    },
+    {
+      "id": "p8",
+      "name": "3-input OR",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "in3", "type": "input"},
+          {"id": "or", "type": "OR", "library_cell": "OR3"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "or"},
+          {"from": "in2", "to": "or"},
+          {"from": "in3", "to": "or"},
+          {"from": "or", "to": "out"}
+        ]
+      },
+      "matches": ["OR3"],
+      "cost": {"area": 3.6, "delay": 135}
+    },
+    {
+      "id": "p9",
+      "name": "AND-OR structure",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in1", "type": "input"},
+          {"id": "in2", "type": "input"},
+          {"id": "in3", "type": "input"},
+          {"id": "in4", "type": "input"},
+          {"id": "and1", "type": "AND", "library_cell": "AND2"},
+          {"id": "and2", "type": "AND", "library_cell": "AND2"},
+          {"id": "or", "type": "OR", "library_cell": "OR2"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in1", "to": "and1"},
+          {"from": "in2", "to": "and1"},
+          {"from": "in3", "to": "and2"},
+          {"from": "in4", "to": "and2"},
+          {"from": "and1", "to": "or"},
+          {"from": "and2", "to": "or"},
+          {"from": "or", "to": "out"}
+        ]
+      },
+      "matches": ["AND2+OR2"],
+      "cost": {"area": 7.6, "delay": 210}
+    },
+    {
+      "id": "p10",
+      "name": "Buffer",
+      "type": "pattern",
+      "structure": {
+        "nodes": [
+          {"id": "in", "type": "input"},
+          {"id": "buf", "type": "BUFFER", "library_cell": "BUF"},
+          {"id": "out", "type": "output"}
+        ],
+        "edges": [
+          {"from": "in", "to": "buf"},
+          {"from": "buf", "to": "out"}
+        ]
+      },
+      "matches": ["BUF"],
+      "cost": {"area": 1.0, "delay": 30}
+    }
+  ],
+  "total_patterns": 10,
+  "notes": "Patterns are used for DAG covering. Each pattern has a cost based on the library cell costs. The algorithm tries to match these patterns to the input graph."
+}
