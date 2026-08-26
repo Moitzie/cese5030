@@ -1,0 +1,13 @@
+{
+  "name": "AND-OR Network",
+  "description": "AND gates feeding into OR gate - (A AND B) OR (C AND D)",
+  "inputs": ["A", "B", "C", "D"],
+  "outputs": ["Y"],
+  "gates": [
+    {"id": "g1", "type": "AND", "inputs": ["A", "B"], "output": "net1"},
+    {"id": "g2", "type": "AND", "inputs": ["C", "D"], "output": "net2"},
+    {"id": "g3", "type": "OR", "inputs": ["net1", "net2"], "output": "Y"}
+  ],
+  "num_gates": 3,
+  "depth": 2
+}
