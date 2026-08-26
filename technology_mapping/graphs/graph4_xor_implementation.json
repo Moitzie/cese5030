@@ -1,14 +1,39 @@
 {
   "name": "XOR from AND-OR-NOT",
-  "description": "XOR gate implemented using AND, OR, and NOT gates",
+  "description": "XOR gate implemented using AND, OR, and NOT gates: A XOR B = (A AND NOT B) OR (NOT A AND B)",
   "inputs": ["A", "B"],
   "outputs": ["Y"],
   "gates": [
-    {"id": "g1", "type": "NOT", "inputs": ["A"], "output": "notA"},
-    {"id": "g2", "type": "NOT", "inputs": ["B"], "output": "notB"},
-    {"id": "g3", "type": "AND", "inputs": ["A", "notB"], "output": "net1"},
-    {"id": "g4", "type": "AND", "inputs": ["notA", "B"], "output": "net2"},
-    {"id": "g5", "type": "OR", "inputs": ["net1", "net2"], "output": "Y"}
+    {
+      "id": "g1",
+      "type": "NOT",
+      "inputs": ["A"],
+      "output": "notA"
+    },
+    {
+      "id": "g2",
+      "type": "NOT",
+      "inputs": ["B"],
+      "output": "notB"
+    },
+    {
+      "id": "g3",
+      "type": "AND",
+      "inputs": ["A", "notB"],
+      "output": "net1"
+    },
+    {
+      "id": "g4",
+      "type": "AND",
+      "inputs": ["notA", "B"],
+      "output": "net2"
+    },
+    {
+      "id": "g5",
+      "type": "OR",
+      "inputs": ["net1", "net2"],
+      "output": "Y"
+    }
   ],
   "num_gates": 5,
   "depth": 3
