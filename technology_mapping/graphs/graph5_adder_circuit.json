@@ -4,12 +4,42 @@
   "inputs": ["A", "B"],
   "outputs": ["Sum", "Carry"],
   "gates": [
-    {"id": "g1", "type": "AND", "inputs": ["A", "B"], "output": "Carry"},
-    {"id": "g2", "type": "NOT", "inputs": ["A"], "output": "notA"},
-    {"id": "g3", "type": "NOT", "inputs": ["B"], "output": "notB"},
-    {"id": "g4", "type": "AND", "inputs": ["A", "notB"], "output": "net1"},
-    {"id": "g5", "type": "AND", "inputs": ["notA", "B"], "output": "net2"},
-    {"id": "g6", "type": "OR", "inputs": ["net1", "net2"], "output": "Sum"}
+    {
+      "id": "g1",
+      "type": "AND",
+      "inputs": ["A", "B"],
+      "output": "Carry"
+    },
+    {
+      "id": "g2",
+      "type": "NOT",
+      "inputs": ["A"],
+      "output": "notA"
+    },
+    {
+      "id": "g3",
+      "type": "NOT",
+      "inputs": ["B"],
+      "output": "notB"
+    },
+    {
+      "id": "g4",
+      "type": "AND",
+      "inputs": ["A", "notB"],
+      "output": "net1"
+    },
+    {
+      "id": "g5",
+      "type": "AND",
+      "inputs": ["notA", "B"],
+      "output": "net2"
+    },
+    {
+      "id": "g6",
+      "type": "OR",
+      "inputs": ["net1", "net2"],
+      "output": "Sum"
+    }
   ],
   "num_gates": 6,
   "depth": 3
