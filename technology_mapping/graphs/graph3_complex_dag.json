@@ -1,0 +1,16 @@
+{
+  "name": "Complex DAG",
+  "description": "Multi-level logic with fanout and reconvergence",
+  "inputs": ["A", "B", "C", "D"],
+  "outputs": ["Y", "Z"],
+  "gates": [
+    {"id": "g1", "type": "AND", "inputs": ["A", "B"], "output": "net1"},
+    {"id": "g2", "type": "AND", "inputs": ["C", "D"], "output": "net2"},
+    {"id": "g3", "type": "OR", "inputs": ["net1", "net2"], "output": "net3"},
+    {"id": "g4", "type": "AND", "inputs": ["net3", "A"], "output": "net4"},
+    {"id": "g5", "type": "NOT", "inputs": ["net4"], "output": "Y"},
+    {"id": "g6", "type": "AND", "inputs": ["net1", "net2"], "output": "Z"}
+  ],
+  "num_gates": 6,
+  "depth": 4
+}
