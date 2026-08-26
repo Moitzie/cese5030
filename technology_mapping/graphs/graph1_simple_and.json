@@ -1,0 +1,9 @@
+{
+  "name": "Simple AND Function",
+  "description": "Basic 2-input AND gate with inputs A and B",
+  "inputs": ["A", "B"],
+  "outputs": ["Y"],
+  "gates": [{"id": "g1", "type": "AND", "inputs": ["A", "B"], "output": "Y"}],
+  "num_gates": 1,
+  "depth": 1
+}
