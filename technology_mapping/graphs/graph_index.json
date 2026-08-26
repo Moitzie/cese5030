@@ -1,0 +1,46 @@
+{
+  "graphs": [
+    {
+      "id": "graph1",
+      "name": "Simple AND Function",
+      "file": "graph1_simple_and.json",
+      "num_gates": 1,
+      "depth": 1,
+      "description": "Basic 2-input AND gate"
+    },
+    {
+      "id": "graph2",
+      "name": "AND-OR Network",
+      "file": "graph2_and_or.json",
+      "num_gates": 3,
+      "depth": 2,
+      "description": "AND gates feeding into OR gate"
+    },
+    {
+      "id": "graph3",
+      "name": "Complex DAG",
+      "file": "graph3_complex_dag.json",
+      "num_gates": 6,
+      "depth": 4,
+      "description": "Multi-level logic with fanout and reconvergence"
+    },
+    {
+      "id": "graph4",
+      "name": "XOR Implementation",
+      "file": "graph4_xor_implementation.json",
+      "num_gates": 5,
+      "depth": 3,
+      "description": "XOR gate implemented using AND, OR, and NOT gates"
+    },
+    {
+      "id": "graph5",
+      "name": "Half Adder",
+      "file": "graph5_adder_circuit.json",
+      "num_gates": 6,
+      "depth": 3,
+      "description": "Half adder circuit with Sum and Carry outputs"
+    }
+  ],
+  "total_graphs": 5,
+  "max_gates": 10
+}
